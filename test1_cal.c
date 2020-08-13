@@ -65,10 +65,10 @@ int test1_cal_div( test1_cal_t *cal){
 
 void test1_cal_print_all( test1_cal_t *cal){
 	printf("	| @ Input1 : %d / Input2 : %d\n", cal->val1, cal->val2);
-	printf("	| @ Plus : %d\n", cal->result_plus);
-	printf("	| @ Minus : %d\n", cal->result_minus);
-	printf("	| @ Multiply : %d\n", cal->result_mul);
-	if( cal->is_div_success == CAL_SUCCESS) printf("	| @ Divide : %0.2f\n", cal->result_div);
+	printf("	| @ Plus : %d + %d = %d\n", cal->val1, cal->val2, cal->result_plus);
+	printf("	| @ Minus : %d - %d = %d\n", cal->val1, cal->val2, cal->result_minus);
+	printf("	| @ Multiply : %d x %d = %d\n", cal->val1, cal->val2, cal->result_mul);
+	if( cal->is_div_success == CAL_SUCCESS) printf("	| @ Divide : %d / %d = %0.2f\n", cal->val1, cal->val2, cal->result_div);
 	else if( cal->is_div_success == CAL_FAIL) printf("	| ! Fail to calculate divide. val2 is '0' (val1:%d / val2:%d)\n", cal->val1, cal->val2);
 }
 
