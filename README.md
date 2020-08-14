@@ -1,2 +1,2 @@
 # test1_cal
-uangel test1 : calculation of 2 numbers
+uangel : calculation of 2 numbers
