@@ -1,0 +1,70 @@
+==7471== Memcheck, a memory error detector
+==7471== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7471== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==7471== Command: ./test1 -1 -100
+==7471== Parent PID: 5716
+==7471== 
+--7471-- 
+--7471-- Valgrind options:
+--7471--    --leak-check=full
+--7471--    --show-leak-kinds=all
+--7471--    --log-file=log.txt
+--7471--    -v
+--7471--    --error-limit=no
+--7471-- Contents of /proc/version:
+--7471--   Linux version 3.10.0-862.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-28) (GCC) ) #1 SMP Fri Apr 20 16:44:24 UTC 2018
+--7471-- 
+--7471-- Arch and hwcaps: AMD64, LittleEndian, amd64-rdtscp-sse3-ssse3
+--7471-- Page sizes: currently 4096, max supported 4096
+--7471-- Valgrind library directory: /usr/libexec/valgrind
+--7471-- Reading syms from /home/dev1/src_test/test1_cal/test1
+--7471-- Reading syms from /usr/lib64/ld-2.17.so
+--7471-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--7471--    object doesn't have a symbol table
+--7471--    object doesn't have a dynamic symbol table
+--7471-- Scheduler: using generic scheduler lock implementation.
+--7471-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==7471== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7471-by-dev1-on-dev1
+==7471== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7471-by-dev1-on-dev1
+==7471== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7471-by-dev1-on-dev1
+==7471== 
+==7471== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==7471== don't want to do, unless you know exactly what you're doing,
+==7471== or are doing some strange experiment):
+==7471==   /usr/libexec/valgrind/../../bin/vgdb --pid=7471 ...command...
+==7471== 
+==7471== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==7471==   /path/to/gdb ./test1
+==7471== and then give GDB the following command
+==7471==   target remote | /usr/libexec/valgrind/../../bin/vgdb --pid=7471
+==7471== --pid is optional if only one valgrind process is running
+==7471== 
+--7471-- REDIR: 0x4019e30 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c7ed5 (???)
+--7471-- REDIR: 0x4019c00 (ld-linux-x86-64.so.2:index) redirected to 0x580c7eef (???)
+--7471-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--7471-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==7471== WARNING: new redirection conflicts with existing -- ignoring it
+--7471--     old: 0x04019e30 (strlen              ) R-> (0000.0) 0x580c7ed5 ???
+--7471--     new: 0x04019e30 (strlen              ) R-> (2007.0) 0x04c2d1b0 strlen
+--7471-- REDIR: 0x4019db0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2e300 (strcmp)
+--7471-- REDIR: 0x401aa70 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c31f90 (mempcpy)
+--7471-- Reading syms from /usr/lib64/libc-2.17.so
+--7471-- REDIR: 0x4ec7130 (libc.so.6:strcasecmp) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--7471-- REDIR: 0x4ec3eb0 (libc.so.6:strnlen) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--7471-- REDIR: 0x4ec9400 (libc.so.6:strncasecmp) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--7471-- REDIR: 0x4ec6910 (libc.so.6:memset) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--7471-- REDIR: 0x4ec68c0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--7471-- REDIR: 0x4ec58a0 (libc.so.6:__GI_strrchr) redirected to 0x4c2cb70 (__GI_strrchr)
+--7471-- REDIR: 0x4ebc6b0 (libc.so.6:malloc) redirected to 0x4c29eec (malloc)
+--7471-- REDIR: 0x4ecd3c0 (libc.so.6:strchrnul) redirected to 0x4c31ab0 (strchrnul)
+--7471-- REDIR: 0x4ec6ae0 (libc.so.6:__GI_mempcpy) redirected to 0x4c31cc0 (__GI_mempcpy)
+--7471-- REDIR: 0x4ebcad0 (libc.so.6:free) redirected to 0x4c2afe6 (free)
+--7471-- REDIR: 0x4ec3dd0 (libc.so.6:__GI_strlen) redirected to 0x4c2d110 (__GI_strlen)
+==7471== 
+==7471== HEAP SUMMARY:
+==7471==     in use at exit: 0 bytes in 0 blocks
+==7471==   total heap usage: 1 allocs, 1 frees, 32 bytes allocated
+==7471== 
+==7471== All heap blocks were freed -- no leaks are possible
+==7471== 
+==7471== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

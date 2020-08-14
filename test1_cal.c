@@ -9,7 +9,7 @@ test1_cal_t* test1_cal_create( int val1, int val2){
 		return NULL;
 	}
 
-	rv = test1_cal_init( cal, val1, val2); if( rv < 0){
+	rv = test1_cal_init( cal, val1, val2); if( rv < CAL_SUCCESS){
 		printf("	| ! Fail to initialize test1_cal_t.\n");
 		return NULL;
 	}
@@ -35,6 +35,16 @@ void test1_cal_final( test1_cal_t *cal){
 void test1_cal_destroy( test1_cal_t *cal){
 	test1_cal_final( cal);
 	free( cal);
+}
+
+void test_cal_clear( test1_cal_t *cal){
+	cal->is_div_success = 0;
+	cal->val1 = 0;
+	cal->val2 = 0;
+	cal->result_plus = 0;
+	cal->result_minus = 0;
+	cal->result_mul = 0;
+	cal->result_div = 0;
 }
 
 int test1_cal_plus( test1_cal_t *cal){
@@ -64,11 +74,11 @@ int test1_cal_div( test1_cal_t *cal){
 }
 
 void test1_cal_print_all( test1_cal_t *cal){
-	printf("	| @ Input1 : %d / Input2 : %d\n", cal->val1, cal->val2);
-	printf("	| @ Plus : %d + %d = %d\n", cal->val1, cal->val2, cal->result_plus);
-	printf("	| @ Minus : %d - %d = %d\n", cal->val1, cal->val2, cal->result_minus);
-	printf("	| @ Multiply : %d x %d = %d\n", cal->val1, cal->val2, cal->result_mul);
-	if( cal->is_div_success == CAL_SUCCESS) printf("	| @ Divide : %d / %d = %0.2f\n", cal->val1, cal->val2, cal->result_div);
+	printf("	| @ Input1	: %d / Input2 : %d\n", cal->val1, cal->val2);
+	printf("	| @ Plus	: (%d) + (%d) = %d\n", cal->val1, cal->val2, cal->result_plus);
+	printf("	| @ Minus	: (%d) - (%d) = %d\n", cal->val1, cal->val2, cal->result_minus);
+	printf("	| @ Multiply	: (%d) x (%d) = %d\n", cal->val1, cal->val2, cal->result_mul);
+	if( cal->is_div_success == CAL_SUCCESS) printf("	| @ Divide	: (%d) / (%d) = %0.2f\n", cal->val1, cal->val2, cal->result_div);
 	else if( cal->is_div_success == CAL_FAIL) printf("	| ! Fail to calculate divide. val2 is '0' (val1:%d / val2:%d)\n", cal->val1, cal->val2);
 }
 
