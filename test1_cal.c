@@ -6,6 +6,10 @@
 static void test1_cal_get_values( test1_cal_t *cal);
 static void test1_cal_get_seq( test1_cal_t *cal);
 static int test1_cal_input_data( int *val);
+static int test1_cal_add( test1_cal_t *cal);
+static int test1_cal_sub( test1_cal_t *cal);
+static int test1_cal_mul( test1_cal_t *cal);
+static int test1_cal_div( test1_cal_t *cal);
 
 //////////////////////////////////////
 // local function for test1_cal_t
@@ -85,12 +89,12 @@ void test_cal_clear( test1_cal_t *cal){
 }
 
 /**
- * @fn int test1_cal_add( test1_cal_t *cal)
+ * @fn static int test1_cal_add( test1_cal_t *cal)
  * @brief function to add data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to add
  * @return success
  */
-int test1_cal_add( test1_cal_t *cal){
+static int test1_cal_add( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 
 	cal->result_add = cal->val1 + cal->val2;
@@ -99,12 +103,12 @@ int test1_cal_add( test1_cal_t *cal){
 }
 
 /**
- * @fn int test1_cal_sub( test1_cal_t *cal)
+ * @fn static int test1_cal_sub( test1_cal_t *cal)
  * @brief function to sub data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to sub
  * @return success
  */
-int test1_cal_sub( test1_cal_t *cal){
+static int test1_cal_sub( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 
 	cal->result_sub = cal->val1 - cal->val2;
@@ -113,12 +117,12 @@ int test1_cal_sub( test1_cal_t *cal){
 }
 
 /**
- * @fn int test1_cal_mul( test1_cal_t *cal)
+ * @fn static int test1_cal_mul( test1_cal_t *cal)
  * @brief function to multiply data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to multiply
  * @return success
  */
-int test1_cal_mul( test1_cal_t *cal){
+static int test1_cal_mul( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 
 	cal->result_mul = cal->val1 * cal->val2;
@@ -127,12 +131,12 @@ int test1_cal_mul( test1_cal_t *cal){
 }
 
 /**
- * @fn int test1_cal_div( test1_cal_t *cal)
+ * @fn static int test1_cal_div( test1_cal_t *cal)
  * @brief function to divide data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to divide
  * @return success
  */
-int test1_cal_div( test1_cal_t *cal){
+static int test1_cal_div( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 	if( cal->val2 == 0){
 		return CAL_FAIL;
@@ -163,7 +167,7 @@ void test1_cal_print_all( test1_cal_t *cal){
 	for( i = 0; i < MAX_NCAL; i++){
 		rv = cal->func[ cal->seq_list[i] - 1]( cal);
 		if( rv < CAL_SUCCESS) printf("\t| ! Fail to calculate values for test1_cal_t. (index:%d)\n", i);
-	} 
+	} printf("\n");
 }
 
 static void test1_cal_get_values( test1_cal_t *cal){
@@ -184,6 +188,12 @@ static void test1_cal_get_values( test1_cal_t *cal){
 			printf("\t| @ Enter second value\t: ");
 			rv_val2 = test1_cal_input_data( &cal->val2);
 			if( rv_val2 < CAL_SUCCESS) continue;
+			if( cal->val2 == CAL_FAIL){
+				printf("| ! Wrong value, value is zero!\n");
+				cal->val2 = DEFAULT_INT;
+				rv_val2 = CAL_FAIL;
+				continue;
+			}
 		}
 
 		if(( cal->val1 != DEFAULT_INT) && ( cal->val2 != DEFAULT_INT) && ( rv_val1 == CAL_SUCCESS) && ( rv_val2 == CAL_SUCCESS)) break;
