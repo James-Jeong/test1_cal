@@ -6,10 +6,10 @@
 static void test1_cal_get_values( test1_cal_t *cal);
 static void test1_cal_get_seq( test1_cal_t *cal);
 static int test1_cal_input_data( int *val);
-static int test1_cal_add( test1_cal_t *cal);
-static int test1_cal_sub( test1_cal_t *cal);
-static int test1_cal_mul( test1_cal_t *cal);
-static int test1_cal_div( test1_cal_t *cal);
+static int _test1_cal_add( test1_cal_t *cal);
+static int _test1_cal_sub( test1_cal_t *cal);
+static int _test1_cal_mul( test1_cal_t *cal);
+static int _test1_cal_div( test1_cal_t *cal);
 
 //////////////////////////////////////
 // local function for test1_cal_t
@@ -48,10 +48,10 @@ int test1_cal_init( test1_cal_t *cal){
 		memset( cal, 0, sizeof( test1_cal_t));
 		test1_cal_get_values( cal);
 		test1_cal_get_seq( cal);
-		cal->func[0] = test1_cal_add;
-		cal->func[1] = test1_cal_sub;
-		cal->func[2] = test1_cal_mul;
-		cal->func[3] = test1_cal_div;
+		cal->func[0] = _test1_cal_add;
+		cal->func[1] = _test1_cal_sub;
+		cal->func[2] = _test1_cal_mul;
+		cal->func[3] = _test1_cal_div;
 	}
 	else return CAL_FAIL;
 	return CAL_SUCCESS;
@@ -89,12 +89,12 @@ void test_cal_clear( test1_cal_t *cal){
 }
 
 /**
- * @fn static int test1_cal_add( test1_cal_t *cal)
+ * @fn static int _test1_cal_add( test1_cal_t *cal)
  * @brief function to add data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to add
  * @return success
  */
-static int test1_cal_add( test1_cal_t *cal){
+static int _test1_cal_add( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 
 	cal->result_add = cal->val1 + cal->val2;
@@ -103,12 +103,12 @@ static int test1_cal_add( test1_cal_t *cal){
 }
 
 /**
- * @fn static int test1_cal_sub( test1_cal_t *cal)
+ * @fn static int _test1_cal_sub( test1_cal_t *cal)
  * @brief function to sub data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to sub
  * @return success
  */
-static int test1_cal_sub( test1_cal_t *cal){
+static int _test1_cal_sub( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 
 	cal->result_sub = cal->val1 - cal->val2;
@@ -117,12 +117,12 @@ static int test1_cal_sub( test1_cal_t *cal){
 }
 
 /**
- * @fn static int test1_cal_mul( test1_cal_t *cal)
+ * @fn static int _test1_cal_mul( test1_cal_t *cal)
  * @brief function to multiply data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to multiply
  * @return success
  */
-static int test1_cal_mul( test1_cal_t *cal){
+static int _test1_cal_mul( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 
 	cal->result_mul = cal->val1 * cal->val2;
@@ -131,12 +131,12 @@ static int test1_cal_mul( test1_cal_t *cal){
 }
 
 /**
- * @fn static int test1_cal_div( test1_cal_t *cal)
+ * @fn static int _test1_cal_div( test1_cal_t *cal)
  * @brief function to divide data of test1_cal_t struct object
  * @param cal test1_cal_t struct object to divide
  * @return success
  */
-static int test1_cal_div( test1_cal_t *cal){
+static int _test1_cal_div( test1_cal_t *cal){
 	if( cal == NULL) return CAL_FAIL;
 	if( cal->val2 == 0){
 		return CAL_FAIL;
