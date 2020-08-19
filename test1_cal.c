@@ -22,7 +22,7 @@ static int _test1_cal_div( test1_cal_t *cal);
 test1_cal_t* test1_cal_create(){
 	int rv = CAL_FAIL;
 
-	test1_cal_t *cal = ( test1_cal_t*)malloc( sizeof( test1_cal_t));
+	test1_cal_t *cal = ( test1_cal_t*)calloc( sizeof( test1_cal_t), 0);
 	if( cal == NULL){
 		printf("	| ! Fail to allocate test1_cal_t.\n");
 		return NULL;
@@ -45,7 +45,6 @@ test1_cal_t* test1_cal_create(){
  */
 int test1_cal_init( test1_cal_t *cal){
 	if( cal != NULL){
-		memset( cal, 0, sizeof( test1_cal_t));
 		test1_cal_get_values( cal);
 		test1_cal_get_seq( cal);
 		cal->func[0] = _test1_cal_add;

@@ -32,7 +32,7 @@ struct test1_cal_s{
 	int result_sub;							/**< 뺄셈 결과 */
 	int result_mul;							/**< 곱셈 결과 */
 	double result_div;						/**< 나눗셈 결과 */
-	int seq_list[ MAX_NCAL];				/**< 출력 순서 목록 */
+	int seq_list[MAX_NCAL];					/**< 출력 순서 목록 */
 	test1_cal_operation_f func[MAX_NCAL];	/**< 사칙연산 지정 함수 포인터 */
 };
 
