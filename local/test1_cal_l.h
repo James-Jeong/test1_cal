@@ -1,15 +1,15 @@
 #ifndef __TEST1_CAL_H__
 #define __TEST1_CAL_H__
 
-//////////////////////////////////////
-// definition & macro for test1_cal_t
-//////////////////////////////////////
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 #include <limits.h>
+
+//////////////////////////////////////
+// Definitions & Macros for test1_cal_t
+//////////////////////////////////////
 
 /** 성공 여부 */
 #define CAL_SUCCESS 1
@@ -37,15 +37,15 @@ struct test1_cal_s{
 };
 
 //////////////////////////////////////
-// function for test1_cal_t
+// Functions for test1_cal_t
 //////////////////////////////////////
+
 test1_cal_t* test1_cal_create();
 int test1_cal_init( test1_cal_t *cal);
 void test1_cal_final( test1_cal_t *cal);
 void test1_cal_destroy( test1_cal_t **cal);
 
 void test1_cal_print_all( test1_cal_t *cal);
-void test_cal_clear( test1_cal_t *cal);
 
 #endif // #ifndef __TEST1_CAL_H__
 
